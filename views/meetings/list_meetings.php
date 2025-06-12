@@ -25,7 +25,9 @@ $result = $conn->query("SELECT * FROM meetings ORDER BY start_date ASC");
         <td><?= $row['location'] ?></td>
         <td>
           <a href="edit_meeting.php?id=<?= $row['id'] ?>">Edit</a> |
-          <a href="delete_meeting.php?id=<?= $row['id'] ?>">Hapus</a>
+          <a href="delete_meeting.php?id=<?= $row['id'] ?>">Hapus</a> |
+          <a href="../google/sync_google_calendar.php?id=<?= $row['id'] ?>">Sync</a> |
+          <a href="../google/delete_google_calendar.php?id=<?= $row['id'] ?>">Hapus Google</a>
         </td>
       </tr>
     <?php } ?>
