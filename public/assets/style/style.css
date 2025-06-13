@@ -486,6 +486,99 @@
   border-radius: 8px;
 }
 
+.help-text {
+  font-size: 0.85em; /* Ukuran font lebih kecil */
+  color: #666;      /* Warna abu-abu */
+  display: block;   /* Pastikan dia di baris baru */
+}
+
+/* Minimalist styles untuk class notulen-view dan notulen-add */
+
+.notulen-view, 
+.notulen-add {
+  /* Reset default styles */
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  
+  /* Typography */
+  font-size: 0.875rem;
+  font-weight: 500;
+  text-decoration: none;
+  line-height: 1.4;
+  
+  /* Layout */
+  display: inline-block;
+  position: relative;
+  
+  /* Transition untuk smooth hover effect */
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+/* Style khusus untuk notulen-view (Lihat notulen) */
+.notulen-view {
+  color: #4f46e5; /* Indigo */
+}
+
+.notulen-view:hover {
+  color: #3730a3; /* Darker indigo */
+}
+
+.notulen-view::before {
+  margin-right: 0.5rem;
+  font-size: 0.75rem;
+  opacity: 0.7;
+}
+
+/* Style khusus untuk notulen-add (Tambah Notulen) */
+.notulen-add {
+  color: #059669; /* Emerald */
+}
+
+.notulen-add:hover {
+  color: #047857; /* Darker emerald */
+}
+
+.notulen-add::before {
+  margin-right: 0.5rem;
+  font-size: 0.75rem;
+  opacity: 0.7;
+}
+
+/* Subtle underline effect on hover */
+.notulen-view:hover::after,
+.notulen-add:hover::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  opacity: 0.6;
+}
+
+.notulen-view:hover::after {
+  background-color: #4f46e5;
+}
+
+.notulen-add:hover::after {
+  background-color: #059669;
+}
+
+.notulen-link {
+  padding: 6px 10px;
+  color: #37474F; 
+  text-decoration: none; 
+  font-size: 20px;
+}
+
+.notulen-link:hover {
+  color: #0D47A1;
+  text-decoration: underline; 
+}
+
 /* list-meet */
 .meeting-list-container {
   width: 90%;

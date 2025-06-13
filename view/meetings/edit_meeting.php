@@ -66,7 +66,15 @@ $meeting = $result->fetch_assoc();
             <label for="guest">Guest E-mail:</label>
             <input class="form-input" type="email" name="guest" id="guest" multiple value="<?= $meeting['guest']; ?>">
           </div>
-        </div>     
+        </div>
+
+        <div class="input-group full-width-input">
+          <div class="input-field">
+            <label for="notulen">Notulen:</label>
+            <input class="form-input" type="url" name="notulen" id="notulen" value="<?= $meeting['notulen']; ?>" placeholder="Contoh: https://drive.google.com/file/d/ID_FILE/view">
+            <small class="help-text">Hanya tautan Google Drive untuk <b>file</b> notulen yang diterima. Pastikan formatnya seperti contoh: `https://drive.google.com/file/d/ID_FILE/view` atau `.../view?usp=sharing`</small>
+          </div>
+        </div> 
         
         <div class="meeting-actions">
           <button class="btn btn-secondary text-bold" onclick="window.location.href='app.php?page=list_meetings';return false;">Batal</button>

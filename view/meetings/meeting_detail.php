@@ -73,6 +73,24 @@ $meeting = $result->fetch_assoc();
               <p class="detail-value"><?= str_replace(',', ', ', $meeting['guest']); ?></p>
             </div>
           </div>
+
+          <div class="detail-one">
+            <div class="detail-item">
+              <label class="detail-label">Notulen</label>
+              <p class="detail-value">
+
+                <?php if (!empty($meeting['notulen'])): ?>
+                    <a href="<?= htmlspecialchars($meeting['notulen']); ?>" target="_blank" class="notulen-link" title="Buka Notulen di Google Drive">
+                        <i class="fa-solid fa-file-alt"></i> 📓 Notulen Hasil - <?= htmlspecialchars($meeting['title']); ?> - <?= date('d F Y', strtotime($meeting['start_date'])); ?>.pdf
+                    </a>
+                <?php else: ?>
+                    <span class="text-muted">Belum ada notulen tersedia.</span>
+                <?php endif; ?>
+
+              </p>
+            </div>
+          </div>
+
         </div>
         <div class="meeting-actions">
           <button class="btn btn-secondary text-bold" onclick="window.location.href='app.php?page=calendar';">Kembali</button>

@@ -47,6 +47,7 @@ $result = $conn->query("SELECT * FROM meetings ORDER BY start_date ASC");
                 <th class="table-header-cell">Akhir meeting</th>
                 <th class="table-header-cell">E-mail Guest</th>
                 <th class="table-header-cell">Lokasi</th>
+                <th class="table-header-cell">Notulen</th>
                 <th class="table-header-cell">Aksi</th>
               </tr>
             </thead>
@@ -64,6 +65,14 @@ $result = $conn->query("SELECT * FROM meetings ORDER BY start_date ASC");
                   <td  class="table-body-cell"><?= str_replace(',', ', ', $row['guest']); ?></td>
 
                   <td  class="table-body-cell"><?= $row['location'];  ?></td>
+
+                  <td  class="table-body-cell">
+                    <?php if (!empty($row['notulen'])): ?>
+                      <a href="<?= $row['notulen'];  ?>" target="_blank" class="notulen-view">👁 Lihat notulen</a>
+                    <?php else: ?>
+                      <a href='app.php?page=edit_meeting&id=<?= $row['id'] ?>#notulen' class="notulen-add">✚ Tambah Notulen</a>
+                    <?php endif; ?>
+                  </td>
 
                   <td  class="table-body-cell">
                     <a class="action-link action-edit" href='app.php?page=edit_meeting&id=<?= $row['id'] ?>'>✏️ Edit</a> 
