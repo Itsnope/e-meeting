@@ -46,45 +46,19 @@ if (
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>E-meeting | <?php echo $page_title; ?></title>
   <style>
-
-    body {
-      /* background */
-      /* background-repeat: no-repeat;
-      background-size: 100%;
-      background-image: url("public/assets/images/bg.jpeg"); */
-      background-color: #F7F6E9;
+    .bg-default {
+      background-color: var(--color-background);
     }
-
-    /* @media (max-width: 768px) {
-      html {
-        font-size: 65.5%;
-      }
-      body {
-        background 
-        height: 100%;
-        background-repeat: no-repeat;
-        background-size: 100%;
-        background-image: url("public/assets/images/hey.jpg");
-      }
-    }*/
-
-    /*@media (max-width: 450px) {
-      html {
-        font-size: 55%;
-      }
-      body {
-        background-height: 100%;
-        background-repeat: no-repeat;
-        background-size: 100%;
-        background-image: url("public/assets/images/ini.jpg");
-      }
-    } */
-
+    .auth-main {
+      font-family: sans-serif;
+    }
   </style>
 </head>
-<body>
-  <?php
-  include $content_page;
-  ?>
+<body class="bg-default">
+  <main class="auth-main">
+    <?php
+    include $content_page;
+    ?>
+  </main>
 </body>
 </html>
