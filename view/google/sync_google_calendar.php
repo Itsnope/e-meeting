@@ -74,7 +74,21 @@ $event = new Google_Service_Calendar_Event([
     'dateTime' => date('Y-m-d\TH:i:s', strtotime($meeting['end_date'])), 
     'timeZone' => 'Asia/Jakarta'],
   'attendees' => $attendees,
-  'location' => $meeting['location']
+  'location' => $meeting['location'],
+  'reminders' => [
+    'useDefault' => false,
+    'overrides' => [
+      [
+        'method'=> 'email',
+        'minutes'=> 24 * 60
+      ],
+      [
+        'method'=> 'popup',
+        'minutes'=> 10
+      ]
+    ]
+  ],
+  
 ]);
 
 $calendarId = $_ENV['CALENDAR_ID'] ?? 'primary';
