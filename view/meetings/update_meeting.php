@@ -15,6 +15,7 @@ $title = $_POST['title'];
 $description = $_POST['description'];
 $start_date = $_POST['start_date'];
 $end_date = $_POST['end_date'];
+$guest = $_POST['guest'];
 
 
 // ---
@@ -22,7 +23,7 @@ $end_date = $_POST['end_date'];
 // ---
 
 // Lakukan update data meeting di database berdasarkan ID yang diberikan
-$conn->query("UPDATE meetings SET title='$title', description='$description', start_date='$start_date', end_date='$end_date' WHERE id=$id");
+$conn->query("UPDATE meetings SET title='$title', description='$description', start_date='$start_date', end_date='$end_date', guest='$guest' WHERE id=$id");
 
 
 // ---
@@ -50,12 +51,33 @@ if (!empty($eventId)) {
   
   // Ambil event yang sudah ada dari Google Calendar menggunakan eventId
   $event = $calendarService->events->get($calendarId, $eventId);
-  
+
   // Setel ulang detail event dengan data yang diperbarui dari form
   $event->setSummary($title);
   $event->setDescription($description);
   $event->setStart(new Google_Service_Calendar_EventDateTime(['dateTime' => date('Y-m-d\TH:i:s', strtotime($start_date)), 'timeZone' => 'Asia/Jakarta']));
   $event->setEnd(new Google_Service_Calendar_EventDateTime(['dateTime' => date('Y-m-d\TH:i:s', strtotime($end_date)), 'timeZone' => 'Asia/Jakarta']));
+
+  // GUEST
+  if (!empty($guest)) {
+    $guest_list = explode(",", $guest); // Pecah string menjadi array
+
+    // Bersihkan dari spasi (array_map = modifikasi semua isi array sekaligus)
+    $guest_list = array_map('trim', $guest_list);
+
+    $attendees = [];// Membuat array kosong bernama $attendees
+
+    // Looping dengan menyimpan data hasil explode terus simpan sementara di $email
+    foreach ($guest_list as $email) {
+      // ambil $email yg disimpan sementara, terus di bungkus jadi array dgn kunci 'email' dan simpan sebagai array di $attendees
+      $attendees[] = ['email' => $email];
+    }
+  } else {
+    $attendees = [];
+  };
+
+  $event->attendees = $attendees;
+
   
   // Kirim permintaan update ke Google Calendar
   $calendarService->events->update($calendarId, $eventId, $event);

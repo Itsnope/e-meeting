@@ -22,19 +22,25 @@ $meeting = $result->fetch_assoc();
 </head>
 <body>
   <form action="app.php?page=update_meeting" method="POST">
-   <input type="hidden" name="id" value="<?= htmlspecialchars($meeting['id']); ?>">
+    <input type="hidden" name="id" value="<?= htmlspecialchars($meeting['id']); ?>">
 
-   <label>Judul Meeting:</label>
-   <input type="text" name="title" value="<?= htmlspecialchars($meeting['title']); ?>">
+    <label>Judul Meeting:</label>
+    <input type="text" name="title" value="<?= htmlspecialchars($meeting['title']); ?>">
 
-   <label>Deskripsi:</label>
-   <textarea name="description"><?= htmlspecialchars($meeting['description']); ?></textarea>
-
-   <label>Awal Meeting:</label>
-   <input type="datetime-local" name="start_date" value="<?= htmlspecialchars(date('Y-m-d\TH:i', strtotime($meeting['start_date']))); ?>">
-
-   <label>Akhir Meeting:</label>
-   <input type="datetime-local" name="end_date" value="<?= htmlspecialchars(date('Y-m-d\TH:i', strtotime($meeting['end_date']))); ?>">
+    <label>Lokasi:</label>
+    <input type="text" name="location" value="<?= htmlspecialchars($meeting['location']); ?>">
+    
+    <label>Deskripsi:</label>
+    <textarea name="description"><?= htmlspecialchars($meeting['description']); ?></textarea>
+    
+    <label>Awal Meeting:</label>
+    <input type="datetime-local" name="start_date" value="<?= htmlspecialchars(date('Y-m-d\TH:i', strtotime($meeting['start_date']))); ?>">
+    
+    <label>Akhir Meeting:</label>
+    <input type="datetime-local" name="end_date" value="<?= htmlspecialchars(date('Y-m-d\TH:i', strtotime($meeting['end_date']))); ?>">
+   
+    <label>Guest E-mail:</label>
+    <input type="text" name="guest" value="<?= htmlspecialchars($meeting['guest']); ?>">
 
    <button type="submit">Simpan Perubahan</button>
   </form>

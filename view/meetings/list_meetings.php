@@ -26,6 +26,7 @@ $result = $conn->query("SELECT * FROM meetings ORDER BY start_date ASC");
       <th>Judul</th>
       <th>Awal Meeting</th>
       <th>Akhir Meeting</th>
+      <th>Guest E-mail</th>
       <th>Lokasi</th>
       <th>Aksi</th>
     </tr>
@@ -37,6 +38,7 @@ $result = $conn->query("SELECT * FROM meetings ORDER BY start_date ASC");
         <td><?= htmlspecialchars($row['title']) ?></td>
         <td><?= htmlspecialchars($row['start_date']) ?></td>
         <td><?= htmlspecialchars($row['end_date']) ?></td>
+        <td><?= htmlspecialchars(str_replace(',', ', ', $row['guest'])) ?></td>
         <td><?= htmlspecialchars($row['location']) ?></td>
         <td>
           <a href="app.php?page=edit_meeting&id=<?= htmlspecialchars($row['id']) ?>">Edit</a> |

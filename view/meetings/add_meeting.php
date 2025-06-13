@@ -19,6 +19,9 @@
     <label>Akhir Meeting:</label>
     <input type="datetime-local" name="end_date" required><br>
 
+    <label>Guest E-mail:</label>
+    <input type="email" name="guest" multiple placeholder="Guest E-mail (pisahkan dengan koma jika lebih dari satu)"><br>
+
     <label>Lokasi:</label>
     <input type="text" name="location"><br>
 
