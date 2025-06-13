@@ -14,6 +14,7 @@ $id = $_POST['id'];
 $title = $_POST['title'];
 $description = $_POST['description'];
 $start_date = $_POST['start_date'];
+$end_date = $_POST['end_date'];
 
 
 // ---
@@ -21,7 +22,7 @@ $start_date = $_POST['start_date'];
 // ---
 
 // Lakukan update data meeting di database berdasarkan ID yang diberikan
-$conn->query("UPDATE meetings SET title='$title', description='$description', start_date='$start_date' WHERE id=$id");
+$conn->query("UPDATE meetings SET title='$title', description='$description', start_date='$start_date', end_date='$end_date' WHERE id=$id");
 
 
 // ---
@@ -54,7 +55,7 @@ if (!empty($eventId)) {
   $event->setSummary($title);
   $event->setDescription($description);
   $event->setStart(new Google_Service_Calendar_EventDateTime(['dateTime' => date('Y-m-d\TH:i:s', strtotime($start_date)), 'timeZone' => 'Asia/Jakarta']));
-  $event->setEnd(new Google_Service_Calendar_EventDateTime(['dateTime' => date('Y-m-d\TH:i:s', strtotime($start_date . ' +1 hour')), 'timeZone' => 'Asia/Jakarta']));
+  $event->setEnd(new Google_Service_Calendar_EventDateTime(['dateTime' => date('Y-m-d\TH:i:s', strtotime($end_date)), 'timeZone' => 'Asia/Jakarta']));
   
   // Kirim permintaan update ke Google Calendar
   $calendarService->events->update($calendarId, $eventId, $event);

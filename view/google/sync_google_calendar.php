@@ -51,7 +51,7 @@ $event = new Google_Service_Calendar_Event([
     'dateTime' => date('Y-m-d\TH:i:s', strtotime($meeting['start_date'])), 
     'timeZone' => 'Asia/Jakarta'],
   'end' => [
-    'dateTime' => date('Y-m-d\TH:i:s', strtotime($meeting['start_date'] . ' +1 hour')), 
+    'dateTime' => date('Y-m-d\TH:i:s', strtotime($meeting['end_date'])), 
     'timeZone' => 'Asia/Jakarta'],
   'location' => $meeting['location']
 ]);

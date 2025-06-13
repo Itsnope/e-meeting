@@ -37,7 +37,8 @@ $meeting = $result->fetch_assoc();
 
   <p><strong>Judul:</strong> <?= htmlspecialchars($meeting['title']) ?></p>
   <p><strong>Deskripsi:</strong> <?= nl2br(htmlspecialchars($meeting['description'])) ?></p>
-  <p><strong>Waktu Meeting:</strong> <?= date('d F Y, H:i', strtotime($meeting['start_date'])) ?></p>
+  <p><strong>Awal Meeting:</strong> <?= date('d F Y, H:i', strtotime($meeting['start_date'])) ?></p>
+  <p><strong>Akhir Meeting:</strong> <?= date('d F Y, H:i', strtotime($meeting['end_date'])) ?></p>
   <p><strong>Lokasi:</strong> <?= htmlspecialchars($meeting['location']) ?></p>
 
   <a href="app.php?page=list_meetings">← Kembali ke Daftar Meeting</a>

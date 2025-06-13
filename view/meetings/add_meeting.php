@@ -13,8 +13,11 @@
     <label>Deskripsi:</label>
     <textarea name="description"></textarea><br>
 
-    <label>Waktu Meeting:</label>
+    <label>Awal Meeting:</label>
     <input type="datetime-local" name="start_date" required><br>
+
+    <label>Akhir Meeting:</label>
+    <input type="datetime-local" name="end_date" required><br>
 
     <label>Lokasi:</label>
     <input type="text" name="location"><br>

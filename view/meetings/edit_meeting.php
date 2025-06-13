@@ -30,8 +30,11 @@ $meeting = $result->fetch_assoc();
    <label>Deskripsi:</label>
    <textarea name="description"><?= htmlspecialchars($meeting['description']); ?></textarea>
 
-   <label>Tanggal & Waktu:</label>
+   <label>Awal Meeting:</label>
    <input type="datetime-local" name="start_date" value="<?= htmlspecialchars(date('Y-m-d\TH:i', strtotime($meeting['start_date']))); ?>">
+
+   <label>Akhir Meeting:</label>
+   <input type="datetime-local" name="end_date" value="<?= htmlspecialchars(date('Y-m-d\TH:i', strtotime($meeting['end_date']))); ?>">
 
    <button type="submit">Simpan Perubahan</button>
   </form>

@@ -9,10 +9,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $title = $_POST['title'];
   $description = $_POST['description'];
   $start_date = $_POST['start_date'];
+  $end_date = $_POST['end_date'];
   $location = $_POST['location'];
   
-  $stmt = $conn->prepare("INSERT INTO meetings (user_id, title, description, start_date, location) VALUES (?, ?, ?, ?, ?)");
-  $stmt->bind_param("issss", $user_id, $title, $description, $start_date, $location);
+  $stmt = $conn->prepare("INSERT INTO meetings (user_id, title, description, start_date, end_date, location) VALUES (?, ?, ?, ?, ?, ?)");
+  $stmt->bind_param("isssss", $user_id, $title, $description, $start_date, $end_date, $location);
 
   if ($stmt->execute()) {
     echo "✅ Jadwal Meeting berhasil disimpan!";

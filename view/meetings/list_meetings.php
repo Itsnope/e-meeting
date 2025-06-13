@@ -24,7 +24,8 @@ $result = $conn->query("SELECT * FROM meetings ORDER BY start_date ASC");
   <table border="1">
     <tr>
       <th>Judul</th>
-      <th>Waktu</th>
+      <th>Awal Meeting</th>
+      <th>Akhir Meeting</th>
       <th>Lokasi</th>
       <th>Aksi</th>
     </tr>
@@ -33,9 +34,10 @@ $result = $conn->query("SELECT * FROM meetings ORDER BY start_date ASC");
     while ($row = $result->fetch_assoc()) {
     ?>
       <tr>
-        <td><?= $row['title'] ?></td>
-        <td><?= $row['start_date'] ?></td>
-        <td><?= $row['location'] ?></td>
+        <td><?= htmlspecialchars($row['title']) ?></td>
+        <td><?= htmlspecialchars($row['start_date']) ?></td>
+        <td><?= htmlspecialchars($row['end_date']) ?></td>
+        <td><?= htmlspecialchars($row['location']) ?></td>
         <td>
           <a href="app.php?page=edit_meeting&id=<?= htmlspecialchars($row['id']) ?>">Edit</a> |
           <a href="app.php?page=delete_meeting&id=<?= htmlspecialchars($row['id']) ?>">Hapus</a> |
