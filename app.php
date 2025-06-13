@@ -55,26 +55,74 @@ if (
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>E-Meeting | <?php echo $page_title; ?></title>
   <style>
-    body {
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+
+      --color-background: #F7F6E9;
+      
+      --color-primary: #2a5d84;
+      --color-secondary: #fff;
+      --color-ink: #000;
+      --color-gray: #808080;
+
+      --btn-color-primary: #2a5d84; /* var(--color-primary) */
+      --btn-color-primary-border: #008080;
+      --btn-color-primary-text: #fff;
+
+      --btn-color-secondary: #fff;
+      --btn-color-secondary-border: #808080;
+      --btn-color-secondary-text: #000;
+
+      /* event */
+      --fc-event-bg-color: #456789;
+      --fc-event-border-color: #456789;
+      --fc-event-text-color: #fff;
+
+      --fc-today-bg-color: #D6E0DB;
+      --fc-border-color: #E0E0D0;
+
+      /* headertoolbar  */
+      --fc-button-text-color: #ffffff; 
+      --fc-button-bg-color: #2c3e50;
+      --fc-button-border-color: #2c3e50;
+      --fc-button-hover-bg-color: #1e2b37;
+      --fc-button-hover-border-color: #1a252f;
+      --fc-button-active-bg-color: #1a252f;
+      --fc-button-active-border-color: #151e27;
+    }
+    .bg-default {
+      background-color: var(--color-background);
+    }
+    .app-main {
       width: 100%;
       height: auto;
-      /* background-color: #F7F6E9; */
-      background-color: #efeee5;
       height: 100vh;
       display: flex;
+      flex-grow: 1;
       flex-direction: column;
       overflow: hidden;
     }
 
-    .konten {
+    .app-content {
       overflow: auto;
+      padding: 10px 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
   </style>
 </head>
-<body>
-  <?php include "view/layouts/navbar.php"; ?>
-  <div class="konten">
-    <?php include $content_page; ?>
-  </div>
+<body class="bg-default">
+  <main class="app-main">
+    <div class="app-header">
+      <?php include 'view/layouts/navbar.php'; ?>
+    </div>
+    <div class="app-content">
+      <?php include $content_page; ?>
+    </div>
+  </main>
 </body>
 </html>
