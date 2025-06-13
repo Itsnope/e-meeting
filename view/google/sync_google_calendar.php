@@ -33,7 +33,17 @@ $calendarService = new Google_Service_Calendar($client);
 // ---
 
 $meeting_id = $_GET['id'];
-$result = $conn->query("SELECT * FROM meetings WHERE id = $meeting_id");
+
+// Gunakan prepared statement untuk query pertama
+$stmt = $conn->prepare("SELECT * FROM meetings WHERE id = ?");
+$stmt->bind_param("i", $meeting_id);
+$stmt->execute();
+$result = $stmt->get_result();
+
+// Validasi apakah meeting ditemukan di database
+if ($result->num_rows === 0) {
+    die("Error: Meeting tidak ditemukan!");
+}
 
 // Ini mengambil 1 baris hasil query MySQL dalam bentuk associative array, 
 // jadinya $meeting['date_time'] bukan jadi DateTime object
@@ -59,6 +69,22 @@ if (!empty($meeting['guest'])) {
   $attendees = [];
 };
 
+// NOTULEN
+$notulen = $meeting['notulen'] ?? '';
+$attachments = [];
+
+if (!empty($notulen) && strpos($notulen, '/d/') !== false) {
+  $urlParts = explode('/d/', $notulen);
+  $fileId = explode('/', $urlParts[1])[0];
+  $fileUrl = $notulen;
+
+  $attachments[] = new Google_Service_Calendar_EventAttachment([
+    'fileId' => $fileId,
+    'fileUrl' => $fileUrl,
+    'title' => "Notulen - " . $meeting['title'] . ".pdf",
+    'mimeType' => 'application/pdf',
+  ]);
+};
 
 // ---
 ## Buat Event Google Calendar
@@ -93,11 +119,12 @@ $event = new Google_Service_Calendar_Event([
       'requestId' => uniqid()
     ],
   ],
+  'attachments' => $attachments
 
 ]);
 
 $calendarId = $_ENV['CALENDAR_ID'] ?? 'primary';
-$event = $calendarService->events->insert($calendarId, $event, ['conferenceDataVersion' => 1]);
+$event = $calendarService->events->insert($calendarId, $event, ['conferenceDataVersion' => 1, 'supportsAttachments' => true]);
 
 
 // ---
@@ -114,6 +141,6 @@ $stmt->execute();
 
 echo "✅ Jadwal meeting berhasil disinkronisasi & telah dikirim ke Google Calendar : <br />";
 
-echo "<a href=$event->htmlLink target=_blank>Lihat Meeting</a>";
+echo "<a href='" . htmlspecialchars($event->htmlLink) . "' target=_blank>Lihat Meeting</a>";
 
 ?>
