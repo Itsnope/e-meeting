@@ -85,21 +85,26 @@ $event = new Google_Service_Calendar_Event([
       [
         'method'=> 'popup',
         'minutes'=> 10
-      ]
-    ]
+      ],
+    ],
   ],
-  
+  'conferenceData' => [
+    'createRequest' => [
+      'requestId' => uniqid()
+    ],
+  ],
+
 ]);
 
 $calendarId = $_ENV['CALENDAR_ID'] ?? 'primary';
-$event = $calendarService->events->insert($calendarId, $event);
+$event = $calendarService->events->insert($calendarId, $event, ['conferenceDataVersion' => 1]);
 
 
 // ---
 ## Simpan Google Event ID ke Database
 // ---
-$stmt = $conn->prepare("UPDATE meetings SET google_event_id = ? WHERE id = ?");
-$stmt->bind_param("si", $event->id, $meeting_id);
+$stmt = $conn->prepare("UPDATE meetings SET gmeet_link = ?, google_event_id = ? WHERE id = ?");
+$stmt->bind_param("ssi", $event->hangoutLink, $event->id, $meeting_id);
 $stmt->execute();
 
 
