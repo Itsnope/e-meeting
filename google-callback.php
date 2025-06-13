@@ -9,7 +9,7 @@ if (!isset($_GET['code'])) {
 $token = $client->fetchAccessTokenWithAuthCode($_GET['code']);
 $_SESSION['access_token'] = $token;
 
-header("Location: views/user/dashboard.php");
+header("Location: auth.php?page=login");
 exit();
 
 ?>

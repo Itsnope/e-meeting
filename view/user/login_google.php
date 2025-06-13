@@ -1,6 +1,10 @@
 <?php
-require '../../config/google-config.php';
+
+// uncomment apabila mengakses file secara langsung
+// require '../../config/google-config.php';
+
 $auth_url = $client->createAuthUrl();
+
 ?>
 
 <!DOCTYPE html>

@@ -1,4 +1,5 @@
 <?php
+
 session_start();
 require '../../config/google-config.php';
 require '../../config/db.php';
@@ -26,7 +27,7 @@ if (isset($meeting['google_event_id'])) {
 $calendarId = $_ENV['CALENDAR_ID'] ?? 'primary';
 
 $calendarService->events->delete($calendarId, $eventId);
-echo "Jadwal meeting berhasil dihapus dari Google
+echo "✅ Jadwal meeting berhasil dihapus dari Google
 Calendar.";
 
 ?>

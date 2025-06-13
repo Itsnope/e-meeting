@@ -6,7 +6,7 @@
   <title>Add Meeting</title>
 </head>
 <body>
-  <form action="../../app/controllers/process_meeting.php" method="POST">
+  <form action="app.php?page=process_meeting" method="POST">
     <label>Judul Meeting:</label>
     <input type="text" name="title" required><br>
 
