@@ -45,14 +45,7 @@ if (
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>E-meeting | <?php echo $page_title; ?></title>
-  <style>
-    .bg-default {
-      background-color: var(--color-background);
-    }
-    .auth-main {
-      font-family: sans-serif;
-    }
-  </style>
+  <link rel="stylesheet" href="public/assets/style/style.css">
 </head>
 <body class="bg-default">
   <main class="auth-main">

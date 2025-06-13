@@ -55,36 +55,6 @@ while ($row = $result->fetch_assoc()) {
     });
 
   </script>
-  <style>
-    .fc-page {
-      display: flex;
-      width: 100%;
-      padding: 20px 0;
-      gap: 20px 0;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-    }
-    .page-header {
-      font-size: 1.5rem;
-      max-width: 1000px;
-    }
-    .fc-container {
-      width: 100%;
-      padding: 35px 50px 50px;
-      justify-content: center;
-      align-items: center;
-      font-family: arial, sans-serif;
-    }
-    #calendar thead tr{
-      background-color: var(--color-primary);
-      color: var(--color-secondary);
-    }
-    #calendar tbody {
-      background-color: var(--color-secondary);
-      color: var(--color-ink);
-    }
-  </style>
 </head>
 <body>
   <main class="fc-page">
