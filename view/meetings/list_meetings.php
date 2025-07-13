@@ -8,7 +8,8 @@
 // ---
 
 // Mengambil semua data meeting dari tabel 'meetings' dan mengurutkannya berdasarkan tanggal mulai secara ascending (terlama ke terbaru).
-$result = $conn->query("SELECT * FROM meetings ORDER BY start_date ASC");
+$user_id = $_SESSION['user_id'];
+$result = $conn->query("SELECT * FROM meetings WHERE user_id = $user_id ORDER BY start_date ASC");
 
 ?>
 
