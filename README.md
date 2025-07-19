@@ -7,11 +7,10 @@ Aplikasi E-Meeting sederhana ini dikembangkan menggunakan PHP dengan bantuan XAM
 
 1. **Clone repository berikut dengan mengetik di terminal/cmd :**
    ```bash
-   git clone https://github.com/Animula-Choragi/Project-1_E-meeting.git
-   cd Project-1_E-meeting
+   git clone https://github.com/Itsnope/e-meeting.git
    ```
 
-2. **Pindahkan folder Project-1_E-meeting ke xampp/htdocs/**
+2. **Pindahkan folder e-meeting ke xampp/htdocs/**
 
 3. **Konfigurasikan environment variables (.env) dengan menyalin file `.env.example` menjadi `.env`**
 
@@ -23,7 +22,7 @@ Aplikasi E-Meeting sederhana ini dikembangkan menggunakan PHP dengan bantuan XAM
 
 1. **Pastikan menginstall composer terlebih dahulu**
 
-2. **Buka terminal/cmd di direktori proyek(misal Project-1_E-meeting) dan jalankan :**
+2. **Buka terminal/cmd di direktori proyek(misal e-meeting) dan jalankan :**
     ```bash
     composer install
     ```
@@ -71,7 +70,7 @@ Aplikasi E-Meeting sederhana ini dikembangkan menggunakan PHP dengan bantuan XAM
 
 1. **Buka Google Cloud Console ([https://console.cloud.google.com/](https://console.cloud.google.com/))**  
 
-2. **Buat Project Baru, misalnya Project-1_E-meeting**
+2. **Buat Project Baru, misalnya e-meeting**
 
 3. **Aktifkan Google Calendar API di API & Services > Library**
 
@@ -79,7 +78,7 @@ Aplikasi E-Meeting sederhana ini dikembangkan menggunakan PHP dengan bantuan XAM
    - Buka Credentials, dan klik create credentials
    - Pilih OAuth Client ID
    - Konfigurasi Authorized redirect URIs ke google-callback.php, misal:  
-     `http://localhost/Project-1_E-meeting/google-callback.php`
+     `http://localhost/e-meeting/google-callback.php`
    - Download OAuth Client
    - Salin isi hasil download dan tempel di config/credentials.json
 
@@ -93,4 +92,4 @@ Aplikasi E-Meeting sederhana ini dikembangkan menggunakan PHP dengan bantuan XAM
 ### **D. Test Run Aplikasi**
 
 1. **Buka XAMPP > Apache > Admin**
-2. **Tulis URL yang mengarah ke direktori proyek (misal: http://localhost/Project-1_E-meeting/)**
+2. **Tulis URL yang mengarah ke direktori proyek (misal: http://localhost/e-meeting/)**
